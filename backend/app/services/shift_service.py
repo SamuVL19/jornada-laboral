@@ -46,10 +46,15 @@ class ShiftService:
             raise ShiftNotActiveException()
 
         now = datetime.now(timezone.utc)
-        active_shift.end_time = now
+        start_time = active_shift.start_time
+        
+        if start_time.tzinfo is None:
+            start_time = start_time.replace(tzinfo=timezone.utc)
 
-        duration_seconds = (now - active_shift.start_time).total_seconds()
+        duration_seconds = (now - start_time).total_seconds()
         calculated_minutes = math.ceil(duration_seconds / 60)
+
+        active_shift.end_time = now
         active_shift.total_minutes = max(1, calculated_minutes)
         active_shift.status = "COMPLETED"
 

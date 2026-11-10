@@ -2,13 +2,7 @@ from typing import Optional
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-try:
-    from ..models.shift import Shift
-except (ImportError, ValueError):
-    try:
-        from app.models.shift import Shift
-    except ImportError:
-        from backend.app.models.shift import Shift
+from app.models.shift import Shift
 
 
 class ShiftRepository:

@@ -3,6 +3,7 @@
 .env.*
 !.env.example
 backend/.env
+frontend/.env
 
 # --- Python y Entornos Virtuales ---
 .venv/

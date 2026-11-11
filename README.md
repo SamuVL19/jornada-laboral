@@ -35,3 +35,28 @@ El tiempo acumulado de la jornada se computa automáticamente en minutos al cerr
 
 - **Director General Gomez (CEO):** Cédula `100011`
 - **Asistente Ejecutivo Estrada:** Cédula `100012`
+
+## Puesta en Marcha
+
+### Con Docker Compose
+
+Requiere tener instalado Docker Desktop
+
+1. Configura el archivo `backend/.env` con la URL de Supabase usando el **Session Pooler**:}
+
+DATABASE_URL=postgresql://postgres.[PROJECT_REF]:[PASSWORD]@aws-0-[REGION][.pooler.supabase.com:5432/postgres](https://.pooler.supabase.com:5432/postgres)
+
+Ejecuta desde la raíz del proyecto:
+
+PowerShell
+docker compose up --build
+Accede a las aplicaciones:
+
+Frontend (Terminal Web): http://localhost:5173/
+
+Documentación Swagger: http://localhost:8000/docs
+
+Para detener los servicios:
+
+PowerShell
+docker compose down
